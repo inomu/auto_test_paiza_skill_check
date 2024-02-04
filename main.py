@@ -100,9 +100,9 @@ if True:
 
         # テストデータと比較
         if( stdout == test_data[t_test_num][1] ):
-            print("TEST:{} comp".format(t_test_num))
+            print("TEST:{} comp".format(t_test_num+1))
         else:
-            print("TEST:{} not comp".format(t_test_num))
+            print("TEST:{} not comp".format(t_test_num+1))
             print(proc)
             print(proc.stdout)
 
