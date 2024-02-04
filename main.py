@@ -2,7 +2,7 @@
 from enum import Enum , IntEnum, auto
 
 
-print("#1 Read TestData")
+print("#1 Read TestDataFile")
 test_data = []
 # データ読み取り{{{
 class R_MODE(Enum):
@@ -30,7 +30,7 @@ with open(r_file, 'r') as rf:
             continue
         elif( 'END\n' == r_line ):
             t_read_mode = R_MODE.INIT
-            t_test_num = t_test_num+1
+            t_test_num += 1
             t_input_data_num = 0
             continue
         else:
@@ -45,7 +45,7 @@ with open(r_file, 'r') as rf:
                 test_data.append( [ r_line ]  )
 
             else:
-                test_data[t_test_num][0] = test_data[t_test_num][0] + r_line
+                test_data[t_test_num][0] += r_line
 
         elif( R_MODE.INPUT_EXPECT == t_read_mode ):
             is_add_num = False
@@ -54,16 +54,16 @@ with open(r_file, 'r') as rf:
 
             if( is_add_num ):
                 test_data[t_test_num].append(r_line)
-                print(test_data)
                 pass
             else:
-                test_data[t_test_num][1] = test_data[t_test_num][1] + r_line
+                test_data[t_test_num][1] += r_line
                 pass
 
         else:
             pass
 # }}}
 
+print("Read Data")
 for line in test_data:
     print(line)
 
@@ -88,12 +88,10 @@ if True:
             break
 
         # echo "testdata" | program.c でデータを入力する
-        #print ("de" + str(test_data[t_test_num][0]) )
         cmd = '' 
         cmd += "echo '"
         cmd += test_data[t_test_num][0]
         cmd += "' | "
-        #cmd += "gcc ./main.c -o main.out && ./main.out"
         cmd += "./main.out"
 
         proc = subprocess.run( cmd , shell=True, stdout=PIPE, stderr=PIPE, text=True)
