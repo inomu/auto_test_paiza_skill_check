@@ -85,6 +85,7 @@ if True:
 
         if(proc.returncode != 0):
             print("Compile Error")
+            print(proc)
             break
 
         # echo "testdata" | program.c でデータを入力する
@@ -101,8 +102,10 @@ if True:
         # テストデータと比較
         if( stdout == test_data[t_test_num][1] ):
             print("TEST:{} comp".format(t_test_num+1))
+            print("Expect:" ,  test_data[t_test_num][1] )
         else:
             print("TEST:{} not comp".format(t_test_num+1))
+            print("Expect:" ,  test_data[t_test_num][1] )
             print(proc)
             print(proc.stdout)
 
