@@ -104,5 +104,6 @@ if True:
         else:
             print("TEST:{} not comp".format(t_test_num))
             print(proc)
+            print(proc.stdout)
 
     
