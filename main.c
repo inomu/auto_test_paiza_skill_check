@@ -18,6 +18,12 @@ int main(void){    // 自分の得意な言語で
     const int expect_x = atoi(sp);
     便利コード */
 
+    /* 便利コード
+     * 最後の単語に含まれる改行コードを取り除く 
+        char* adr = strchr( str , '\n' );
+        if( NULL != adr) *adr = '\0';
+    便利コード */
+
     if( 50 == atoi(str) ){
         printf("400\n");
         printf("300\n");
